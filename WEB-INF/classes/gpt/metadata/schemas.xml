@@ -29,12 +29,12 @@ between that and the fgdc-bestpractice. Resort so fgdc, dg, ...
   <schema fileName="gpt/metadata/virtual/virtual-definition.xml"/>
   <schema fileName="gpt/metadata/dc/dc-definition.xml"/>
 <!--   <schema fileName="gpt/metadata/iso/inspire/inspire-iso-19115-definition.xml"/>
-  <schema fileName="gpt/metadata/iso/inspire/inspire-iso-19119-definition.xml"/>
- -->  <schema fileName="gpt/metadata/iso/nap/nap-iso-19115-definition.xml"/>
+  <schema fileName="gpt/metadata/iso/inspire/inspire-iso-19119-definition.xml"/> -->
+  <schema fileName="gpt/metadata/iso/nap/nap-iso-19115-definition.xml"/>
   <schema fileName="gpt/metadata/iso/nap/nap-iso-19119-definition.xml"/>
   <schema fileName="gpt/metadata/iso/iso-19115-definition.xml"/>
   <schema fileName="gpt/metadata/iso/iso-19119-definition.xml"/>
-  <schema fileName="gpt/metadata/iso/iso-19115-2-definition.xml"/>
+  <schema fileName="gpt/metadata/iso/iso-19115-2-definition.xml"/>  
   <schema fileName="gpt/metadata/ogc/ogc-definition.xml"/> 
   <schema fileName="gpt/metadata/ogc/cswRecord-definition.xml"/>
   <schema fileName="gpt/metadata/other/georss-definition.xml"/> 

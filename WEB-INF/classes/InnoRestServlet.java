@@ -77,10 +77,7 @@ public class InnoRestServlet extends HttpServlet {
                 }
             }
 //            String xmlUrl = request.getScheme() + "://" + request.getServerName();
-            //String xmlUrl = "https://edg-staging.epa.gov";
-            String xmlUrl = "http://buzzard.innovateteam.com";
-            //String xmlUrl = "http://localhost:8080";
-            
+            String xmlUrl = "https://edg-staging.epa.gov";
 //            if (request.getServerPort()>0)
 //                xmlUrl += ":" + request.getServerPort();
 
@@ -119,6 +116,7 @@ public class InnoRestServlet extends HttpServlet {
                 String[] result = getUrlContents(xmlUrl, request, contentType);
                 contentType = result[0];
                 xmlIn = result[1];
+                log.fine("contentType: " + contentType);
                 String requestUrl = request.getRequestURL().toString();
                 String queryStr = request.getQueryString();
                 if (!queryStr.contains("&redirected=true") & xmlIn.contains("Unable to return the document associated with the supplied identifier.")) {
@@ -143,7 +141,7 @@ public class InnoRestServlet extends HttpServlet {
                 boolean inLeg = legacyXsl.contains(xslParm);
                 log.fine("inSS " + inSS + "   inLeg " + inLeg);
                 if (((!inSS)) && (!inLeg)) {
-                    out.println("Unsupported xsl parm supplied to InnoRestServlet.");
+                    out.println("Unsupported xsl parm supplied to InnoRestServlet ");
                     return;
                 }
             }
