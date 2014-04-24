@@ -35,6 +35,10 @@
     <div id="infovis"></div>
 </div>
 
+<td valign="top">
+ <div class="prompt">
+ The EDG provides the option to use an Ontology service when perfoming a search. More information on using the EDG Ontology service can be found <a href="https://edg-staging.epa.gov/metadata/webhelp/en/gptlv10/index.html#/How_to_Search_with_an_Ontology_Service/00t00000000p000000/" target="_blank">here</a>.</div></td>
+
 </f:verbatim>
 
 <%

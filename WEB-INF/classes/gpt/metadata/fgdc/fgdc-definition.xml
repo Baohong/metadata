@@ -15,7 +15,7 @@
  limitations under the License.
 -->
 <schema key="fgdc" 
-  toEsriItemInfoXslt="gpt/metadata/fgdc/fgdc-toEsriItemInfo.xslt"> <!--detailsXslt="gpt/metadata/fgdc/fgdc-details.xslt"-->
+  toEsriItemInfoXslt="gpt/metadata/fgdc/fgdc-toEsriItemInfo.xslt">
 
   <!-- schema label -->
   <label resourceKey="catalog.mdParam.schema.fgdc"/>
