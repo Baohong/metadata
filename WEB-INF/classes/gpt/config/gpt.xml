@@ -223,6 +223,10 @@
                 <parameter key="profileId" 
                     value="urn:esri:gpt:HTTP:JSON:ESRI:AGSONLINE" /> 
             </repository>
+            <!-- For the registered CS-W repositories flagged for viewing in federated search -->
+            <repository key="*" 
+                 class="com.esri.gpt.catalog.search.SearchEngineExternalCsw"/>
+            <!-- Repositories dataGov and geodab need to be after CS-W repositories-->
             <repository
                  key="dataGov"
                  class="com.esri.gpt.catalog.search.SearchEngineExternalCsw"
@@ -245,10 +249,6 @@
                 <parameter key="url" 
                     value="http://production.geodab.eu/gi-cat-StP/services/cswiso?request=GetCapabilities&amp;service=CSW&amp;version=2.0.2" /> 
             </repository>
-
-            <!-- For the registered CS-W repositories flagged for viewing in federated search -->
-            <repository key="*" 
-                 class="com.esri.gpt.catalog.search.SearchEngineExternalCsw"/>
         </repositories>
       
         <!-- Class registration to produce search result in a custom format.
