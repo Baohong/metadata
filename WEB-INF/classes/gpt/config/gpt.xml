@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
     See the NOTICE file distributed with
     this work for additional information regarding copyright ownership.
@@ -14,7 +14,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<gptConfig version="1.2.4">
+<gptConfig version="1.2.5">
 
     <databaseReference name="gpt" jndiName="jdbc/gpt"/>
     
@@ -374,15 +374,15 @@
             - httpClientRequest.connectionTimeout: connection timeout for HTTP requests to the remote endpoints using Apache HTTP client. 
 				If no value is provided, the default value is infinitive.                  
                 Possible values:  If no unit is given, number of milliseconds,
-					[SECOND] â€“ number of seconds
-					[MINUTE] â€“ number of minutes
-					[HOUR] â€“ number of hours
+					[SECOND] – number of seconds
+					[MINUTE] – number of minutes
+					[HOUR] – number of hours
             - httpClientRequest.responseTimeout: response timeout for HTTP requests to the remote endpoints using Apache HTTP client. 
 				If no value is provided, the default value is infinitive.
                 Possible values:  If no unit is given, number of milliseconds,
-					[SECOND] â€“ number of seconds
-					[MINUTE] â€“ number of minutes
-					[HOUR] â€“ number of hours
+					[SECOND] – number of seconds
+					[MINUTE] – number of minutes
+					[HOUR] – number of hours
             - httpClient.alwaysClose: forces to always close socket connection for requests to the remote endpoints using Apache HTTP client. 
 				Default: false.                  
         -->  
@@ -402,7 +402,7 @@
   
         
 		    <!-- Resource Link Builder
-			      - resourceLinkBuilder.preview.filter: regular expression disabling â€˜previewâ€™ link on search result 
+			      - resourceLinkBuilder.preview.filter: regular expression disabling ‘preview’ link on search result 
 				      for all records having resource URL matching template. 
 		    -->	
         <parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.zip$|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.gz$|.*\.tgz$|.*\.tar$|.*\.rar$|.*\.shp$|.*\.dbf$|.*\.xls$|.*\.dwg$|.*\.dxf$|.*\.dgn$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*"/>
