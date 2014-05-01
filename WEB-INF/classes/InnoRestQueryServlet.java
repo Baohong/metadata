@@ -144,7 +144,7 @@ public class InnoRestQueryServlet extends HttpServlet {
             String xmlIn = "";
             URL url = new URL(inURL);
             URLConnection c = null;
-            //HttpURLConnection c = null;
+
             //InputStream is = null;
             //BufferedReader br;
             //String s;
@@ -154,15 +154,18 @@ public class InnoRestQueryServlet extends HttpServlet {
 
             //c = (HttpURLConnection)url.openConnection();
             // get cookies from request and put them in thew req for the xml
-            /*String theCookies = request.getHeader("Cookie");
-            c.setRequestProperty("Cookie", theCookies);
+            
+            String theCookies = request.getHeader("Cookie");
+            //c.setRequestProperty("Cookie", theCookies);
 
             String ssoHeader = props.getProperty("ssoHeader").toLowerCase();
-            if (request.getHeader(ssoHeader) != null) {
-                c.setRequestProperty(ssoHeader, request.getHeader(ssoHeader));
-                log.info(ssoHeader + ": " + request.getHeader(ssoHeader));
-            }
+            //if (request.getHeader(ssoHeader) != null) {
+            //    c.setRequestProperty(ssoHeader, request.getHeader(ssoHeader));
+            //    log.info(ssoHeader + ": " + request.getHeader(ssoHeader));
+            //}
+            
             //c.connect();
+            /*
             System.out.println("ct: " + c.getContentType());
             //contentType = c.getContentType();
             log.info("got contentType " + c.getContentType());
@@ -196,6 +199,12 @@ public class InnoRestQueryServlet extends HttpServlet {
             HttpMethodBase method = null;
 
             method = new GetMethod(inURL);
+
+            method.addRequestHeader("Cookie", theCookies);
+            if (request.getHeader(ssoHeader) != null) {
+                method.addRequestHeader(ssoHeader, request.getHeader(ssoHeader));
+                log.info(ssoHeader + ": " + request.getHeader(ssoHeader));
+            }
 
             int statusCode = client.executeMethod(method);
             if (statusCode == HttpStatus.SC_OK)

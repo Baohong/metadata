@@ -32,7 +32,7 @@ public class ClickjackFilter implements Filter
         HttpServletResponse res = (HttpServletResponse)response;
         res.addHeader("X-FRAME-OPTIONS", mode );
         chain.doFilter(request, response);
-		
+        //res.addHeader("X-FRAME-OPTIONS", mode );		
 	}
 
 	public void destroy() {

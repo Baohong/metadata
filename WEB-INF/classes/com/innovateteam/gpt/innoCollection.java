@@ -8,12 +8,20 @@ import com.esri.gpt.catalog.arcims.ImsMetadataAdminDao;
 import com.esri.gpt.catalog.arcims.ImsServiceException;
 import com.esri.gpt.catalog.context.CatalogIndexException;
 import com.esri.gpt.catalog.management.MmdActionRequest;
+import com.esri.gpt.catalog.search.SearchException;
 import com.esri.gpt.catalog.management.MmdCriteria;
 import com.esri.gpt.catalog.publication.UploadRequest; 
 import com.esri.gpt.catalog.schema.SchemaException; 
+import com.esri.gpt.catalog.search.ASearchEngine;
+import com.esri.gpt.catalog.search.SearchCriteria;
+import com.esri.gpt.catalog.search.SearchEngineFactory;
+import com.esri.gpt.catalog.search.SearchResult;
+import com.esri.gpt.catalog.search.SearchResultRecord;
 import com.esri.gpt.control.view.SelectablePublishers;    
 import com.esri.gpt.framework.collection.StringSet;    
 import com.esri.gpt.framework.context.RequestContext;   
+import com.esri.gpt.framework.jsf.FacesContextBroker;
+import com.esri.gpt.framework.jsf.MessageBroker;
 import com.esri.gpt.framework.security.credentials.CredentialsDeniedException;
 import com.esri.gpt.framework.security.identity.IdentityException; 
 import com.esri.gpt.framework.security.identity.NotAuthorizedException;
@@ -31,11 +39,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import com.esri.gpt.framework.util.LogUtil;
+import com.esri.gpt.framework.util.Val;
 import java.sql.Statement;
 import java.util.ArrayList;  
 import java.util.Iterator; 
 import java.util.LinkedHashMap;  
 import java.util.Set;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -44,6 +55,7 @@ import java.util.Set;
 public class innoCollection extends BaseDao {
 
     private Connection con = null;
+    private RequestContext context = null;
     private static Logger log = Logger.getLogger("com.esri.gpt");
 
     /*
@@ -73,6 +85,7 @@ public class innoCollection extends BaseDao {
 
     public innoCollection(RequestContext context) {
         try {
+            this.context = context;
             this.con = context.getConnectionBroker().returnConnection("").getJdbcConnection();
         } catch (SQLException ex) {
             log.info("Deewendra : " + ex);
@@ -675,7 +688,22 @@ public class innoCollection extends BaseDao {
         }
         return rs;
     }
+    public String getDescriptionByUUID(String docuuid) {
 
+
+        try {
+                SearchCriteria criteria = new SearchCriteria();
+                SearchResult result = new SearchResult();
+                ASearchEngine dao = SearchEngineFactory.createSearchEngine(criteria, result, this.context, null);
+                SearchResultRecord record = dao.getMetadataAsSearchResultRecord(docuuid);
+                String fullDescription = record.getFullDescription();
+                fullDescription = Val.escapeStrForJson(fullDescription);
+		return fullDescription;
+        } catch (SearchException ex ) {
+            Logger.getLogger(innoCollection.class.getName()).log(Level.SEVERE, null, " Baohong - " + ex.toString());
+            return null;
+        }
+    }
     public String getParentResource(String docuuid) {
         String returnVal = "";
         String sql = "SELECT distinct docuuid FROM inno_collection_member WHERE child_docuuid = ?";
@@ -843,5 +871,17 @@ public class innoCollection extends BaseDao {
             Logger.getLogger(innoCollection.class.getName()).log(Level.SEVERE, null, " Deewendra - " + ex.toString());
         }
         return ret;
+    }
+    public String formatJSON(String jsonString) {
+        JSONObject jsonObject;
+        String formattedStr = "";
+        try {
+            jsonObject = new JSONObject(jsonString);
+            formattedStr = jsonObject.toString(2);
+        } catch (JSONException ex) {
+            Logger.getLogger(innoCollection.class.getName()).log(Level.SEVERE, null, " Baohong - " + ex.toString());
+        }
+        return formattedStr;
+        
     }
 }

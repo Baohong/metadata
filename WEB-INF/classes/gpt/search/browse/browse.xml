@@ -15,6 +15,6 @@
  limitations under the License.
 -->
 <treeCollection>
-  <tree key="browseCatalog" fileName="https://edg.epa.gov/metadata/BrowseOwners"/>
+  <tree key="browseCatalog" fileName="http://buzzard.innovateteam.com/metadata/BrowseOwners"/>
   <tree key="browseResource" fileName="gpt/search/browse/browse-resource.xml"/>
 </treeCollection>

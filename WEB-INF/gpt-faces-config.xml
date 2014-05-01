@@ -507,8 +507,7 @@
       <to-view-id>/catalog/main/home.jsp</to-view-id>
       <redirect/>
     </navigation-case>
-    
-    <!-- content pages -->    
+
     <navigation-case>
         <from-outcome>catalog.collection.home</from-outcome>
         <to-view-id>/catalog/collection/home.jsp</to-view-id>
@@ -524,6 +523,8 @@
         <to-view-id>/catalog/collection/virtualResource.jsp</to-view-id>
         <redirect/>
     </navigation-case> 
+        
+    <!-- content pages -->    
     <navigation-case>
       <from-outcome>catalog.content.about</from-outcome>
       <to-view-id>/catalog/content/about.jsp</to-view-id>
@@ -620,6 +621,7 @@
     </navigation-case>
      
    
+    
     <!-- harvest repository pages -->
     <navigation-case>
       <from-outcome>catalog.harvest.manage.edit</from-outcome>
@@ -702,7 +704,9 @@
       <redirect/>
     </navigation-case>
   </navigation-rule>
-      
+
+
+<!-- about page -->
   <navigation-rule>
     <navigation-case>
       <from-outcome>catalog.about.home</from-outcome>
@@ -710,6 +714,7 @@
       <redirect/>
     </navigation-case>
   </navigation-rule>
+
   <!-- browse page -->
   <navigation-rule>
     <navigation-case>
@@ -719,6 +724,7 @@
     </navigation-case>
   </navigation-rule>
       
+  <!-- data page -->
   <navigation-rule>
     <navigation-case>
       <from-outcome>catalog.data.home</from-outcome>
@@ -726,6 +732,8 @@
       <redirect/>
     </navigation-case>
   </navigation-rule>
+
+  <!-- components page -->
   <navigation-rule>
     <navigation-case>
       <from-outcome>catalog.components.home</from-outcome>
@@ -733,6 +741,7 @@
       <redirect/>
     </navigation-case>
   </navigation-rule>
+
     <navigation-rule>
         <navigation-case>
             <from-outcome>catalog.collection.home</from-outcome>
@@ -747,6 +756,8 @@
             <redirect/>
         </navigation-case>
     </navigation-rule>
+
+  <!-- resources page -->
   <navigation-rule>
     <navigation-case>
       <from-outcome>catalog.resources.home</from-outcome>
@@ -754,6 +765,7 @@
       <redirect/>
     </navigation-case>
   </navigation-rule>
+
   <!-- resource page -->
   <navigation-rule>
     <navigation-case>
