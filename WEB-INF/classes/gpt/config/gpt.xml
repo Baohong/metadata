@@ -714,10 +714,11 @@
     <!-- Scheduled Background Threads -->
     <scheduler active="true" corePoolSize="0">
         <!-- Catalog synchronization (sync Lucene index with the database) -->
-        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="13:15"/>
+        <!--thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="13:15"/-->
+        <thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" at="9:30"/>
         <!--thread class="com.esri.gpt.catalog.context.CatalogSynchronizer" period='15[MINUTE]' delay="30[SECOND]"/-->
         <!-- Index optimization --> 
-        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="00:10"/>
+        <thread class="com.esri.gpt.catalog.lucene.LuceneIndexOptimizer" at="9:30"/>
     
 <!-- Innovate's batch thread -->
       <thread class="com.innovateteam.gpt.BatchUpdateWrapper"
