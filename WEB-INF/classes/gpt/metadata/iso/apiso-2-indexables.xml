@@ -268,7 +268,7 @@
         xpath="concat('tp.position.',gml32:timePosition,'.indeterminate.',gml32:timePosition/@indeterminatePosition)"/>
     </property>
   </property>
-  
+  <property meaning="body" xpathType="STRING" xpath="//*"/>
   <!-- dcat-specific -->
   <property meaning="dcat.publisher"
  xpath="

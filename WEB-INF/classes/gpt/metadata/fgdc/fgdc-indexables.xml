@@ -65,7 +65,7 @@
       xpath="concat('tp.position.',caldate,'.fgdctime.',time)"/>
   </property>
   
-	<property meaning="body" xpathType="STRING" xpath="/*"/>
+	<property meaning="body" xpathType="STRING" xpath="//*"/>
   <!-- dcat-specific -->
   <property meaning="dcat.accessLevelComment" xpath="/metadata/idinfo/accconst"/> <!-- | /metadata/idinfo/useconst | /metadata/distinfo/distliab"/>-->
   <property meaning="dcat.mbox" xpath="/metadata/idinfo/ptcontac/cntinfo/cntemail"/>
