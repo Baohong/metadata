@@ -270,7 +270,7 @@
         xpath="concat('tp.position.',gml32:timePosition,'.indeterminate.',gml32:timePosition/@indeterminatePosition)"/>
     </property>
   </property>
-  
+  <property meaning="body" xpathType="STRING" xpath="//*"/>
 <!-- dcat-specific -->
     <property meaning="dcat.publisher"
  xpath="
@@ -283,7 +283,7 @@
     <property meaning="dcat.dataDictionary" xpath="/gmd:MD_Metadata/gmd:contentInfo/gmd:MD_FeatureCatalogueDescription/gmd:featureCatalogueCitation/gmd:CI_Citation/gmd:citedResponsibleParty/gmd:CI_ResponsibleParty/gmd:contactInfo/gmd:CI_Contact/gmd:onlineResource/gmd:CI_OnlineResource/gmd:linkage/gmd:URL"/>
     
     <property meaning="dcat.accessUrl" xpath="/gmd:MD_Metadata/gmd:distributionInfo/gmd:MD_Distribution/gmd:transferOptions/gmd:MD_DigitalTransferOptions/gmd:onLine/gmd:CI_OnlineResource/gmd:linkage/gmd:URL[../../gmd:function/gmd:CI_OnLineFunctionCode/@codeListValue='download']"/>
-    <property meaning="body" xpathType="STRING" xpath="//*"/>
+    
 <!--Added by Torrin Hultgren 2/21/13 to include "Optional" dcat components-->
     <property meaning="dcat.issued" xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:citation/gmd:CI_Citation/gmd:date/gmd:CI_Date/gmd:date/gco:Date[../../gmd:dateType/gmd:CI_DateTypeCode/@codeListValue='publication']"/>
     <property meaning="dcat.accrualPeriodicity" xpath="/gmd:MD_Metadata/gmd:identificationInfo/gmd:MD_DataIdentification/gmd:resourceMaintenance/gmd:MD_MaintenanceInformation/gmd:maintenanceAndUpdateFrequency/gmd:MD_MaintenanceFrequencyCode"/>
