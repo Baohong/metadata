@@ -1,9 +1,10 @@
 /* EPA's Core JS file, vOneEPA Web
  * 20 June 2012: Added Google Analytics
  * 30 Sep 2013: Adjusted Twitter handle for EPA
- * 17 Dec 2013: Removed JQuery dependencies for GA
- ** and added .dmg as trackable file extension
+ * 17 Dec 2013: Removed JQuery dependencies for GA, added .dmg as trackable file extension
  * 27 Dec 2013: Added unobtrusiveAddEvent (from GTM) and use it to call trackDownloads
+ * 25 Feb 2014: Share dropdown: added Pinterest and Google+, removed reddit
+ * 25 Feb 2014: GA Link Tracking: Added GSA code, colorbox fix, and extended file types tracked
  * Questions? hessling.michael@epa.gov
  */
 var epaCore = {
@@ -47,7 +48,7 @@ function loadtracking() {
     passToGA = "one and done visitor";
   }
 
-	/* START For Cross Domain Tracking Use Visitor ID
+  /* START For Cross Domain Tracking Use Visitor ID
    * from __utma query param instead of cookie
    */
   function getQuerystring(key, default_) {
@@ -115,7 +116,7 @@ function loadtracking() {
     var myLinks = document.links;
 
     //Specify Filetypes Tracked
-    var fileTypes = ['csv','dmg','doc','docx','exe','mp3','pdf','ppt','pptx','xls','xlsx','zip'];
+    var fileTypes = ['ai','csv','dmg','doc','docx','eps','exe','gif','ico','jpeg','jpg','json','kml','mp3','msi','pdf','png','ppt','pptx','psd','rar','smi','swf','tif','txt','xls','xlsm','xlsx','xml','xsd','zip'];
 
     //Specify Cross Domains Tracked
     var crossDomains = ['epa.gov','epa-otis.gov','epa-echo.gov','energystar.gov','enviroflash.info','airnow.gov','urbanwaters.gov','relocatefeds.gov','lab21century.gov','supportportal.com'];
@@ -127,6 +128,10 @@ function loadtracking() {
     var theTarget = '';
 
     function track(type, theLink, val1, target){
+
+      var cbox_check1 = "colorbox";
+      var cbox_check2  = "cbox";
+
       if(target == ""){
         target = "_self";
       }
@@ -134,14 +139,19 @@ function loadtracking() {
         if(type == "Email"){
           setTimeout("window.open('"+theLink.href+"','"+ target+"')", 150);
           _gaq.push(['_trackEvent', type, "Link Click", val1]);
+          _gaq.push(['GSA._trackEvent', type, "Link Click", val1]);
         }
-        else if(type == "Download"){
-          setTimeout("window.open('"+theLink.href+"','"+ target+"')", 150);
+        else if(type == "Download") {
+          if(theLink.className.indexOf(cbox_check1) == -1 && theLink.className.indexOf(cbox_check2) == -1) {
+            setTimeout("window.open('"+theLink.href+"','"+ target+"')", 150);
+          }
           _gaq.push(['_trackEvent', type, val1 + ' Click', theLink.href]);
+          _gaq.push(['GSA._trackEvent', type, val1 + ' Click', theLink.href]);
         }
         else if(type == "External" && document.location.hostname != theLink.hostname){
           setTimeout("window.open('"+theLink.href+"','"+ target+"')", 150);
           _gaq.push(['_trackEvent', type, val1, theLink.href]);
+          _gaq.push(['GSA._trackEvent', type, val1, theLink.href]);
         }//close firstIf
         else {
           window.open(theLink.href, target);
@@ -193,10 +203,12 @@ function loadtracking() {
                     }
                     setTimeout("window.open('"+this.href+"','"+ target+"')", 150);
                     _gaq.push(['_trackEvent', 'External', 'Link Click', this.href]);
+                    _gaq.push(['GSA._trackEvent', 'External', 'Link Click', this.href]);
                     return false;
                   }// if crossDomainExclude
                 }//for CrossDomainExclude
                 _gaq.push(['_trackEvent', 'crossDomain', 'Link Click', this.href]);
+                _gaq.push(['GSA._trackEvent', 'crossDomain', 'Link Click', this.href]);
                 if (this.target == '_self' || this.target == '') {
                   _gaq.push(['_link', this.href]);
                 } else {
@@ -259,7 +271,7 @@ jQuery(document).ready(function() {
   var t = jQuery('table.zebra tr:even');
   if (t[0]) { t.addClass('tint'); }
 
-/*  //Date last modified
+  //Date last modified
   if (document.lastModified == "") { var d = new Date(); }
   else { var d = new Date(document.lastModified); }
   var updated = document.createElement('p'); updated.id = 'date';
@@ -270,7 +282,7 @@ jQuery(document).ready(function() {
   var page_URL = document.createElement('p'); page_URL.id = 'url';
   page_URL.appendChild(document.createTextNode(window.location.href));
   f.appendChild(page_URL);
-*/
+
   //NEW! icon
   var x = new Date(); var today = new Date(x.toGMTString());
   var now = (Date.UTC(epaCore.takeYear(today),today.getMonth(),today.getDate(),0,0,0))/86400000;
@@ -285,7 +297,7 @@ jQuery(document).ready(function() {
 
   // Share Bookmarklet
   jQuery('#content').append('<ul id="share"><li><a href="#area">Share</a></li></ul>');
-  var bookmarkList = '<ul><li class="facebook"><a href="#area" title="facebook">Facebook</a></li><li class="reddit"><a href="#area" title="reddit">reddit</a></li><li class="twitter"><a href="#area" title="twitter">Twitter</a></li><li class="whatisthis"><a href="#area" title="whatisthis">What is this?</a></li></ul>';
+  var bookmarkList = '<ul><li class="facebook"><a href="#area" title="facebook">Facebook</a></li><li class="gplus"><a href="#area" title="gplus">Google+</a></li><li class="pin"><a href="#area" title="pin">Pinterest</a></li><li class="twitter"><a href="#area" title="twitter">Twitter</a></li></ul>';
   jQuery('#share li').append(bookmarkList).hover(function() {jQuery(this).addClass("on");}, function() {jQuery(this).removeClass("on");});
 
   jQuery("#share li ul li a").click(function () {
@@ -294,9 +306,9 @@ jQuery(document).ready(function() {
     var title = encodeURIComponent(document.title);
     switch (site) {
       case "facebook": _gaq.push(['_trackSocial', 'facebook', 'share click', popURL]); epaCore.postPopUp('http://www.facebook.com/sharer.php?u='+popURL+'&t='+title, 'facebook', 'height=436,width=646,scrollbars=yes,resizable=yes'); break;
-      case "reddit": _gaq.push(['_trackSocial', 'reddit', 'share click', popURL]); epaCore.postPopUp('http://www.reddit.com/submit?url='+popURL, 'reddit', 'height=450,width=650,scrollbars=yes,resizable=yes'); break;
+      case "gplus": _gaq.push(['_trackSocial', 'gplus', 'share click', popURL]); epaCore.postPopUp('https://plus.google.com/share?url='+popURL, 'gplus', 'height=375,width=550,scrollbars=yes,resizable=yes'); break;
+      case "pin": _gaq.push(['_trackSocial', 'pin', 'share click', popURL]); epaCore.postPopUp('http://pinterest.com/pin/create/button/?url='+popURL+'&description='+title, 'pin', 'height=375,width=550,scrollbars=yes,resizable=yes'); break;
       case "twitter": _gaq.push(['_trackSocial', 'twitter', 'share click', popURL]); epaCore.postPopUp('https://twitter.com/share?text='+title+'&url='+popURL+'&via=EPA&count=none&lang=en', 'twitter', 'height=375,width=550,scrollbars=yes,resizable=yes'); break;
-      case "whatisthis": setTimeout('window.location = "http://www.epa.gov/epahome/bookmarks.html"', 150); _gaq.push(['_trackSocial', 'what is this', 'what is this click', popURL]); break;
     }
   });
 
