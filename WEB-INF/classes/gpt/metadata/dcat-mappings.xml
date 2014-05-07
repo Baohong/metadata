@@ -46,7 +46,7 @@
 	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
 	  <field name="programCode" index="programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
-	  <!-- <field name="webService" index="resource.url" /> -->
+	  <field name="webService" index="resource.url" />
 	  <field name="format" index="dcat.format" required="true"/>
 	  <field name="license" index="dcat.license" required="true"/>
 	  <field name="accessURL" index="dcat.accessUrl" required="true"/>
@@ -67,7 +67,7 @@
 	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
 	  <field name="programCode" index="programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary"  />
-	  <!-- <field name="webService" index="resource.url" required="true"/> -->
+	  <field name="webService" index="resource.url" required="true"/>
 	  <field name="format" index="dcat.format" required="true"/>
 	  <field name="license" index="dcat.license" required="true"/>
 	  <field name="accessURL" index="dcat.accessUrl" required="true"/>
@@ -84,11 +84,11 @@
 	  <field name="mbox" index="dcat.mbox" required="true"/>
 	  <field name="identifier" required="true"/>  
 	  <field name="accessLevel" index="accessLevel" required="true"/>
-	  <!--<field name="accessLevelComment" index="dcat.accessLevelComment" maxChars="255" required="false"/>-->
+	  <field name="accessLevelComment" index="dcat.accessLevelComment" maxChars="255" required="false"/>
 	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
 	  <field name="programCode" index="programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary" />
-	  <!-- <field name="webService" index="resource.url" required="true"/> -->
+	  <field name="webService" index="resource.url" required="true"/>
 	  <field name="accessURL" index="dcat.accessUrl" required="true"/>
 	  <field name="format" index="dcat.format" required="true"/>
 	  <field name="license" index="dcat.license" required="true"/>
@@ -109,17 +109,17 @@
 	  <field name="bureauCode" index="bureauCode" type="array" required="true"/>
 	  <field name="programCode" index="programCode" type="array" required="true"/>
 	  <field name="dataDictionary" index="dcat.dataDictionary" />
-	  <!-- <field name="webService" index="resource.url" required="true"/> -->
+	  <field name="webService" index="resource.url" required="true"/>
 	  <field name="accessURL" index="dcat.accessUrl" required="true"/>
 	  <field name="format" index="apiso.Format" required="true"/>
 	  <field name="license" index="dcat.license"  required="true"/>
 	  <field name="spatial" index="envelope.minx,envelope.miny,envelope.maxx,envelope.maxy" required="true"/>
 	  <field name="temporal" index="apiso.TempExtent_begin,apiso.TempExtent_end" required="true" isDate="true" type="date" dateFormat="yyyy-MM-dd" delimiter="/"/>
-<!--Added by Torrin Hultgren 2/21/13 to include "Optional" dcat components-->
+<!--Added by Torrin Hultgren 2/21/14 to include "Optional" dcat components-->
       <field name="issued" index="dcat.issued"  isDate="true" type="date" dateFormat="yyyy-MM-dd" required="false"/>	
-      <!--<field name="accrualPeriodicity" index="dcat.accrualPeriodicity"  required="false"/>-->
+      <field name="accrualPeriodicity" index="dcat.accrualPeriodicity"  required="false"/>
       <field name="language" index="dcat.language" type="array" required="false" />
-      <!--<field name="dataQuality" index="dcat.dataQuality"  required="false"/>-->
+      <field name="dataQuality" index="dcat.dataQuality"  required="false"/>
       <field name="theme" index="apiso:Topiccategory" required="false" />
       <field name="references" index="dcat.references" type="array" required="false"/>
       <field name="size" index="dcat.size"  required="false"/>

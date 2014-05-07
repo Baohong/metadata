@@ -1,0 +1,23 @@
+[
+  {
+    "title" : "Environmental Dataset Gateway Dcat Json",
+    "description" : "Dcat json response of the EPA Environmental Dataset Gateway",
+    "keyword" : ["EPA", "environment"],
+    "modified" : "2014",
+    "publisher" : "US Environmental Protection Agency",
+    "contactPoint" : "David Parrish",
+    "mbox" : "edg@epa.gov",
+    "identifier" : "EDG",
+    "accessLevel" : "public",
+    "accessLevelComment" : "",
+    "bureauCode" : ["020:00"],
+    "programCode" : ["020:072"],
+    "dataDictionary" : "http:\/\/ofmpub.epa.gov\/sor_internet\/registry\/termreg\/home\/overview\/home.do",
+    "accessURL" : "https:\/\/edg.epa.gov\/metadata",
+    "webService" : "https:\/\/edg.epa.gov\/metadata\/rest\/find\/document?f=dcat",
+    "format" : "application\/json",
+    "license" : "Apache 2",
+    "spatial" : "-180 -90 180 90",
+    "temporal" : "2013\/2014"
+  }
+]
