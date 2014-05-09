@@ -445,7 +445,78 @@ public void readCSWGetMetadataByIDResponseLocal(String response, CswRecord recor
 }
 
 /**
- * Parse a CSW response.
+ * Read a CSW metadata response.  Will populate record referenceList and record metadataResourceUrl
+ * The CSW metadata response is read. The CSw record is updated with the
+ * metadata
+ * 
+ * @param recordByIdResponse the response
+ * @param record the record
+ * 
+ * @throws TransformerException the transformer exception
+ * @throws IOException Exception while reading 
+ * 
+ */
+public void readCSWGetMetadataByIDResponse(CswClient cswClient, String recordByIdResponse, CswRecord record)
+    throws TransformerException, IOException {
+  String metadataxslt = this.getMetadataxslt();
+  if (metadataxslt == null || metadataxslt.equals("")) {
+    record.setFullMetadata(Utils.chkStr(recordByIdResponse));
+  } else {
+ 
+    LOG.finer("Transforming GetRecordByID intermidiate xml to GetRecordById " +
+    		"Native");
+    
+    String sRecordByIdXslt = this.getMetadataXsltObj()
+      .transform(Utils.chkStr(recordByIdResponse));
+        
+    String xmlUrl = null;
+    String dctReferences = sRecordByIdXslt;
+    LOG.finer("Native GetRecordBYID from transform = " + dctReferences);
+    DcList lstDctReferences = new DcList(dctReferences);
+    
+    Iterator<DcList.Value> iter = lstDctReferences.iterator();
+    while(iter.hasNext()) {
+      DcList.Value value = iter.next();
+      if(value.getValue().toLowerCase().endsWith(".xml") 
+          || value.getScheme().equals(SCHEME_METADATA_DOCUMENT)) {
+        xmlUrl = value.getValue();
+      }
+    }
+    record.setReferences(lstDctReferences);
+    LOG.finer("URL to view full metadata document found = " + xmlUrl);
+    record.setMetadataResourceURL(xmlUrl);
+    // T.M.  Adds so that xslt for ouput xml for transform Metadata can be
+    // used
+    String indirectUrlXml = null;
+    if(!Val.chkStr(record.getMetadataResourceURL()).equals("")) {
+      InputStream istRealDoc = cswClient.submitHttpRequest("GET", 
+          Utils.chkStr(record.getMetadataResourceURL()), "", "", "");
+      indirectUrlXml = Val.chkStr(Utils.getInputString2(istRealDoc));
+    }
+    
+    if(!Val.chkStr(indirectUrlXml).equals("")) {
+      // Indirect xml
+      record.setFullMetadata(indirectUrlXml);
+    } else if(!Val.chkStr(sRecordByIdXslt).equals("")) {
+    	
+      try {
+    	  // Check if it is an  xml document
+    	  XmlIoUtil.transform(sRecordByIdXslt);
+    	  record.setFullMetadata(sRecordByIdXslt);
+      } catch(Exception e) {
+        ResourceXml resourceXml = new ResourceXml();
+        String fullMetadata = resourceXml.makeResourceFromCswResponse(recordByIdResponse, record.getId());
+        record.setFullMetadata(fullMetadata); 
+      }
+    } else {
+      // The get record by id
+      record.setFullMetadata(recordByIdResponse);
+    } 
+  }
+
+}
+
+ /* Parse a CSW response.
  * The CSW response is parsed and the records collection is populated with
  * the result.The reponse is parsed based on the response xslt.
  *
