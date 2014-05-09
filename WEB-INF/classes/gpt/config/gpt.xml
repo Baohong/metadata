@@ -170,8 +170,8 @@
     -->   
         
     <search
-        searchTimeoutMillisecs="10000"
-        distributedSearchTimeoutMillisecs="5000"
+        searchTimeoutMillisecs="1000000"
+        distributedSearchTimeoutMillisecs="500000"
         distributedSearchMaxSelectedSites="5"
         searchResultsPerPage="25"
         searchResultsReviewsShown="only-reviewed"
