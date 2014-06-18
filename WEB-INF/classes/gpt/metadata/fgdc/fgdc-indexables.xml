@@ -65,7 +65,6 @@
       xpath="concat('tp.position.',caldate,'.fgdctime.',time)"/>
   </property>
   
-	<property meaning="body" xpathType="STRING" xpath="//*"/>
   <!-- dcat-specific -->
   <property meaning="dcat.accessLevelComment" xpath="/metadata/idinfo/accconst"/> <!-- | /metadata/idinfo/useconst | /metadata/distinfo/distliab"/>-->
   <property meaning="dcat.mbox" xpath="/metadata/idinfo/ptcontac/cntinfo/cntemail"/>
@@ -75,5 +74,8 @@
   <property meaning="dcat.publisher" xpath="/metadata/distinfo/distrib/cntinfo/cntperp/cntorg | /metadata/distinfo/distrib/cntinfo/cntorgp/cntorg"/>
   <property meaning="dcat.format" xpath="/metadata/distinfo/storder/digform/digtinfo/fname"/>
   <property meaning="dcat.accessUrl" xpath="/metadata/distinfo/stdorder/digform/digtopt/onlinopt/computer/networka/networkr"/>
+
+  <!-- Full-text search -->
+  <property meaning="body" xpathType="STRING" xpath="/metadata/*"/>  
 </indexables>
 

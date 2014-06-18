@@ -404,8 +404,9 @@
 			      - resourceLinkBuilder.preview.filter: regular expression disabling ‘preview’ link on search result 
 				      for all records having resource URL matching template. 
 		    -->	
-        <parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.zip$|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.gz$|.*\.tgz$|.*\.tar$|.*\.rar$|.*\.shp$|.*\.dbf$|.*\.xls$|.*\.dwg$|.*\.dxf$|.*\.dgn$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*"/>
-  
+        <!--parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.zip$|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.gz$|.*\.tgz$|.*\.tar$|.*\.rar$|.*\.shp$|.*\.dbf$|.*\.xls$|.*\.dwg$|.*\.dxf$|.*\.dgn$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*/MapServer.*"/-->
+		<parameter key="resourceLinkBuilder.preview.filter" value="^ftp://.*|^ftps://.*|.*\.e00$|.*\.lpk$|.*\.pkinfo$|.*\.mxd$|.*\.lyr$|.*\.nmf$|.nsf/*|.*f=lyr.*|.*f=nmf.*|.*/globeserver.*|.*/gpserver.*|.*/geocodeserver.*|.*/geometryserver.*|.*/networkserver.*|.*/geodataserver.*|.*service=wfs.*|.*wfsserver.*|.*service=wcs.*|.*wcsserver.*|.*service=csw.*|.*cswserver.*|.*mobileserver.*|.*naserver.*|.*/MapServer.*"/>
+
         <!-- This parameter is used to enable managing user role in ldap identity store. -->
         <parameter key="ldap.identity.manage.userRoleEnabled" value="true"/>    
         <!-- This parameter is used to restrict managing user roles to roles configured in geoportal. -->
@@ -524,7 +525,7 @@
               securityProtocol="SSLv3">
               <ldapServiceAccount
                   securityPrincipal="cn=gdg__prod,cn=users,dc=epa,dc=gov"
-                  securityCredentials="JuCm1q91"
+                  securityCredentials="HiVn2p02"
                   encrypted="false"
                   catalogAdminDN="cn=gdg_admin,cn=users,dc=epa,dc=gov"/>
           </ldapConnectionProperties>
