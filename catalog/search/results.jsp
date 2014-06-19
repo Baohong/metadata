@@ -329,6 +329,8 @@ function innoFixRestIntraLinks() {
     innoFixRestIntraLink("srRestHTMLIntra");
     innoFixRestIntraLink("srRestFRAGMENTIntra");
     innoFixRestIntraLink("srRestKMLIntra");
+    innoFixRestIntraLink("srRestJSONIntra");
+    innoFixRestIntraLink("srRestCSVIntra");
     //alert("frmSearchCriteria:srRestGEORSSIntra:" + dojo.byId("frmSearchCriteria:srRestGEORSSIntra").value);
     //INNfixRestLinks();
 }
