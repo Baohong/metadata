@@ -1048,6 +1048,9 @@
         aoiMaxX = parseInt(tmpAoiMaxX);
         aoiMaxY = parseInt(tmpAoiMaxY);
         aoiWkid = parseInt(tmpAoiWkid);
+        innoFixRestIntraLinks();
+        //innoGetCsvAnchors();
+        innoHookupAnchors();
        
       }),
       preventCache: true,

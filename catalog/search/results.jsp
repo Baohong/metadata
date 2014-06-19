@@ -323,6 +323,29 @@ function rsInsertReviewsHandler(data) {
    
 }
 
+function innoFixRestIntraLinks() {
+    //console.debug("in innoFixRestIntraLinks");
+    innoFixRestIntraLink("srRestGEORSSIntra");
+    innoFixRestIntraLink("srRestHTMLIntra");
+    innoFixRestIntraLink("srRestFRAGMENTIntra");
+    innoFixRestIntraLink("srRestKMLIntra");
+    //alert("frmSearchCriteria:srRestGEORSSIntra:" + dojo.byId("frmSearchCriteria:srRestGEORSSIntra").value);
+    //INNfixRestLinks();
+}
+dojo.addOnLoad(innoFixRestIntraLinks);
+function innoFixRestIntraLink(id) {
+    var a = dojo.byId("frmSearchCriteria:"+id);
+    //var a = dojo.byId(id);
+    if (a != null) {
+        //console.debug("a "+a);
+        var href = a.href;
+        //console.debug("href: "+href);
+        var newHref = href.replace(innoRestFrom,innoRestTo);
+        //alert("newHref: "+newHref);
+        //console.debug("newHref: "+newHref);
+        a.href = newHref;
+    }
+}
 /*
 Goes through the resource urls and types and forwards the information to
 the service checker url via an xml to json jsp
@@ -429,8 +452,22 @@ function rsGetQualityOfService() {
 }
 
 </script>
+<script type="text/javascript" src="../js/inno/metrics.js"></script>
+<script type="text/javascript">
+    dojo.addOnLoad(innoHookupAnchors);
+</script>
 
 </f:verbatim>
+<gpt:jscriptVariable
+  id="innoRestFrom"
+  quoted="true"
+  value="#{gptMsg['catalog.search.searchResult.restFrom']}"
+  variableName="innoRestFrom"/>
+<gpt:jscriptVariable
+  id="innoRestTo"
+  quoted="true"
+  value="#{gptMsg['catalog.search.searchResult.restTo']}"
+  variableName="innoRestTo"/>
 
 <gpt:jscriptVariable 
   id="_rsReviewAlt"

@@ -207,7 +207,7 @@ protected void setBaseContextPath(String path) {
 
         // build remaining links
         this.buildOpenLink(xRecord, record);
-        this.buildPreviewLink(xRecord, record);
+        //this.buildPreviewLink(xRecord, record);
         this.buildAGSLinks(xRecord, record);
         this.buildAddToMapLink(xRecord, record);
         this.buildWebsiteLink(xRecord, record);
