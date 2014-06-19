@@ -1049,7 +1049,7 @@
         aoiMaxY = parseInt(tmpAoiMaxY);
         aoiWkid = parseInt(tmpAoiWkid);
         innoFixRestIntraLinks();
-        //innoGetCsvAnchors();
+        innoGetCsvAnchors();
         innoHookupAnchors();
        
       }),
