@@ -51,7 +51,7 @@
 
 <% // scripting functions %>
 <f:verbatim>
-
+  <!--script type="text/javascript" src="../js/inno/criteria_result.js"></script-->
   <style type="text/css">
 
     .valignUp {
@@ -59,6 +59,7 @@
     }
 
   </style>
+<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js'></script>
 
  <script type="text/javascript">
     // &filter parameter based on window.location.href
@@ -912,6 +913,7 @@
     return restParams;
   }
 
+//dojo.ready(function(){
   /**
    *Does a search on the specified page number
    *
@@ -922,7 +924,7 @@
     scDoAjaxSearch();
     return false;
   }
-
+  //  dojo.ready(function(){
   /* Does an ajax search and injects the results into the page
    */
   var _xhrSearch;
@@ -1084,6 +1086,7 @@
 
     return false;
   }
+//});
 
   /**
   Updated by distributed search iframe
