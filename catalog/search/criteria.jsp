@@ -59,7 +59,7 @@
     }
 
   </style>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js'></script>
+<!--script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js'></script-->
 
  <script type="text/javascript">
     // &filter parameter based on window.location.href

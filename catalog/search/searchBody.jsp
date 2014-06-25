@@ -64,7 +64,7 @@
 <!--[if IE]><script language="javascript" type="text/javascript" src="../js/Jit/Extras/excanvas.js"></script><![endif]-->
 <script type="text/javascript" src="../js/Jit/jit-yc.js"></script>
 <script type="text/javascript" src="../../catalog/collection/js/manageBody.js"></script>
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js'></script>
+<!--script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/dojo/1.9.3/dojo/dojo.js'></script-->
 
 <script type="text/javascript">
   dojo.require("dojo.cookie");
