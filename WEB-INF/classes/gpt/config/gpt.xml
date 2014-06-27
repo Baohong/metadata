@@ -203,7 +203,7 @@
                 labelResourceKey="catalog.search.searchSite.epageoplatform"
                 abstractResourceKey="catalog.search.searchSite.epageoplatform.abstract">
                 <parameter key="endPointSearchUrl" 
-                    value="https://epa.maps.arcgis.com/error_sharing/search?q={searchTerms}%20AND%20accountid:cJ9YHowT8TU7DUyn&amp;start={startIndex}&amp;num={count}&amp;f=json"/>
+                    value="https://epa.maps.arcgis.com/sharing/search?q={searchTerms}%20AND%20accountid:cJ9YHowT8TU7DUyn&amp;start={startIndex}&amp;num={count}&amp;f=json"/>
                 <parameter key="defaultParamValues"
                     value="q&#x2714;access:public"/>  
                 <parameter key="profileId" 

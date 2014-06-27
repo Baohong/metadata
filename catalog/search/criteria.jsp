@@ -24,7 +24,7 @@
 	com.esri.gpt.framework.context.RequestContext schContext = com.esri.gpt.framework.context.RequestContext.extract(request);
 	com.esri.gpt.catalog.context.CatalogConfiguration schCatalogCfg = schContext.getCatalogConfiguration();
 	com.esri.gpt.framework.collection.StringAttributeMap schParameters = schCatalogCfg.getParameters();
-	boolean hasSearchHint = false;
+	boolean hasSearchHint = true;
 	if(schParameters.containsKey("catalog.searchCriteria.hasSearchHint")){	
 		String schHasSearchHint = com.esri.gpt.framework.util.Val.chkStr(schParameters.getValue("catalog.searchCriteria.hasSearchHint"));
 		hasSearchHint = Boolean.valueOf(schHasSearchHint);
@@ -1408,6 +1408,10 @@
 
 
   </script>
+  <script type="text/javascript" src="../../catalog/js/inno/metrics.js"></script>
+  <script type="text/javascript">
+		dojo.addOnLoad(innoHookupAnchors);
+   </script>
 </f:verbatim> 
 
 <gpt:jscriptVariable 
@@ -1484,30 +1488,42 @@
   variableName="_csDefaultSearchSite"/>
 
 <% // search text and submit button %>
-<h:panelGrid columns="4">
-  <h:outputLabel for="scText" value="#{gptMsg['catalog.search.search.lblSearch']}"/>
-  <h:inputText id="scText"
-               value="#{SearchController.searchCriteria.searchFilterKeyword.searchText}"
-               maxlength="4000" styleClass="searchBox" />
-  <h:commandButton id="btnDoSearch" rendered="true"
-                   onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch(); return false;"
-                   value="#{gptMsg['catalog.search.search.btnSearch']}"
-                   action="#{SearchController.getNavigationOutcome}"
-                   actionListener="#{SearchController.processAction}">
-    <f:attribute name="#{SearchController.searchEvent.event}"
-                 value="#{SearchController.searchEvent.eventExecuteSearch}" />
-    <f:attribute name="onSearchPage" value="true"/>
-  </h:commandButton>
-  <h:graphicImage
-    id="loadingGif" 
-    style="visibility: hidden;"
-    url="/catalog/images/loading.gif" alt="" 
-    width="30px">
-  </h:graphicImage>
-   <f:verbatim>
-   	<div id="hints"></div>
-   </f:verbatim>
-</h:panelGrid> 
+    <table style="width:450px">
+        <tbody>
+            <tr>
+                <td>
+                    <h:outputLabel for="scText" value="#{gptMsg['catalog.search.search.lblSearch']}"/>
+                    <h:inputText id="scText"
+                    value="#{SearchController.searchCriteria.searchFilterKeyword.searchText}"
+                    maxlength="4000" styleClass="searchBox" />                      
+                </td>
+                <td>
+                    <h:commandButton id="btnDoSearch" rendered="true"
+                                    onclick="javascript:scSetPageTo(1); scExecuteDistributedSearch(); return false;"
+                                    value="#{gptMsg['catalog.search.search.btnSearch']}"
+                                    action="#{SearchController.getNavigationOutcome}"
+                                    actionListener="#{SearchController.processAction}">
+                        <f:attribute name="#{SearchController.searchEvent.event}"
+                                     value="#{SearchController.searchEvent.eventExecuteSearch}" />
+                        <f:attribute name="onSearchPage" value="true"/>
+                    </h:commandButton>
+                </td>
+                <td>
+                    <h:graphicImage
+                      id="loadingGif" 
+                      style="visibility: hidden;"
+                      url="/catalog/images/loading.gif" alt="" 
+                      width="30px">
+                    </h:graphicImage>                
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <div id="hints"></div>
+                </td>
+            </tr>
+        </tbody>
+    </table> 
 
 <h:panelGroup id="dockDistributedSearch" rendered="#{SearchController.searchConfig.allowExternalSearch == true}">
   <f:verbatim>
